@@ -58,46 +58,46 @@ export const PositioningSection = () => {
           transition={{ delay: 0.2 }}
           className="max-w-4xl mx-auto"
         >
-          <div className="panel-border rounded-lg overflow-hidden">
-            {/* Header */}
-            <div className="grid grid-cols-4 gap-4 p-4 border-b border-border bg-card">
-              <div className="text-sm font-mono text-muted-foreground"></div>
-              <div className="text-sm font-mono text-muted-foreground text-center">
-                Logs / APM
-              </div>
-              <div className="text-sm font-mono text-muted-foreground text-center">
-                Prompt Tools
-              </div>
-              <div className="text-sm font-mono text-primary text-center">
-                AgentTrace
-              </div>
-            </div>
+          <div className="rounded-lg border border-border bg-card overflow-x-auto relative">
+            <table className="w-full min-w-[600px] md:min-w-[800px] border-collapse">
+              <thead>
+                <tr className="border-b border-border">
+                  <th className="sticky left-0 z-30 bg-card border-r border-border p-4 text-left font-mono text-sm text-muted-foreground w-[140px] md:w-[200px] shadow-[4px_0_12px_rgba(0,0,0,0.1)]">
 
-            {/* Rows */}
-            {positioningData.map((row, i) => (
-              <motion.div
-                key={row.category}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 * i }}
-                className="grid grid-cols-4 gap-4 p-4 border-b border-border last:border-b-0 hover:bg-panel/50 transition-colors"
-              >
-                <div className="text-sm font-medium text-foreground">
-                  {row.category}
-                </div>
-                <div className="text-sm text-center text-muted-foreground">
-                  {row.logsApm}
-                </div>
-                <div className="text-sm text-center text-muted-foreground">
-                  {row.promptTools}
-                </div>
-                <div className="text-sm text-center text-primary flex items-center justify-center gap-2">
-                  <Check className="w-4 h-4" />
-                  {row.agentTrace}
-                </div>
-              </motion.div>
-            ))}
+                  </th>
+                  <th className="p-4 text-center font-mono text-sm text-muted-foreground">
+                    Logs / APM
+                  </th>
+                  <th className="p-4 text-center font-mono text-sm text-muted-foreground">
+                    Prompt Tools
+                  </th>
+                  <th className="p-4 text-center font-mono text-sm text-primary bg-primary/5">
+                    AgentTrace
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {positioningData.map((row) => (
+                  <tr key={row.category} className="border-b border-border last:border-b-0 group hover:bg-muted/30">
+                    <td className="sticky left-0 z-20 bg-card border-r border-border p-4 font-medium text-foreground w-[140px] md:w-[200px] shadow-[4px_0_12px_rgba(0,0,0,0.1)] group-hover:bg-muted/30 transition-colors whitespace-normal">
+                      {row.category}
+                    </td>
+                    <td className="p-4 text-center text-muted-foreground">
+                      {row.logsApm}
+                    </td>
+                    <td className="p-4 text-center text-muted-foreground">
+                      {row.promptTools}
+                    </td>
+                    <td className="p-4 text-center text-primary bg-primary/5 font-medium relative group-hover:bg-primary/10 transition-colors">
+                      <div className="flex items-center justify-center gap-2">
+                        <Check className="w-4 h-4" />
+                        {row.agentTrace}
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </motion.div>
       </div>

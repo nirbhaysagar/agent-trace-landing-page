@@ -55,7 +55,7 @@ const capabilities = [
 
 export const CapabilitiesSection = () => {
   return (
-    <section id="capabilities" className="relative overflow-hidden bg-background py-40 scroll-mt-24">
+    <section id="capabilities" className="relative overflow-hidden bg-background py-24 md:py-40 scroll-mt-24">
       {/* 1. Background Overlay: Subtle 1px Grid */}
       <div className="absolute inset-0 pointer-events-none opacity-20 dark:opacity-20 opacity-5"
         style={{

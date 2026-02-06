@@ -34,7 +34,7 @@ export const HowItWorksSection = () => {
   const [activeStep, setActiveStep] = useState(0);
 
   return (
-    <section id="how-it-works" className="py-40 relative overflow-hidden bg-background scroll-mt-24">
+    <section id="how-it-works" className="py-24 md:py-40 relative overflow-hidden bg-background scroll-mt-24">
       <div className="container relative">
 
         {/* Section Header */}
