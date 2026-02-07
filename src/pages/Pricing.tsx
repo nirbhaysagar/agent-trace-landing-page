@@ -7,28 +7,36 @@ import { Button } from "@/components/ui/button";
 // Simulated Data Streams for Pricing Backgrounds
 const DATA_STREAMS = {
     local: [
-        "INIT_LOCAL_ENV...",
+        "INIT_LOCALHOST...",
         "MOUNT_VIRTUAL_FS [OK]",
         "REPLAY_ENGINE: READY",
-        "LICENSE: COMMUNITY",
-        "TRACE_DEPTH: 100",
-        "DEBUGGER: ATTACHED"
+        "RETENTION: 7D_EPHEMERAL",
+        "TRACE_CAP: 50_LOCAL",
+        "ENV: SANDBOX"
     ],
-    pro: [
+    cloud: [
         "SYNC_CLOUD_STORE...",
-        "TEAM_AUTH: VERIFIED",
-        "ALLOCATING_WORKERS [OK]",
+        "INGESTION: UNCAPPED",
         "RETENTION_POLICY: 30D",
-        "ALERTS: ACTIVE",
-        "BILLING_CYCLE: MONTHLY"
+        "ALLOCATING_WORKERS [OK]",
+        "REPAIR_ALGO: ONLINE",
+        "TEAM_SEATS: 5"
+    ],
+    scale: [
+        "CLUSTER_SCALE: AUTO",
+        "RETENTION_POLICY: 90D",
+        "GOVERNANCE: ACTIVE",
+        "SSO_SAML: ENFORCED",
+        "REPAIR_ALGO: UNLIMITED",
+        "TEAM_SEATS: 20"
     ],
     enterprise: [
         "AUDIT_GATE: OPEN",
-        "SAML_SSO: CONNECTED",
-        "VPC_TUNNEL: SECURE",
-        "SLA_MONITOR: ACTIVE",
-        "COMPLIANCE_CHECK: PASS",
-        "ENCRYPTION: AES-256-GCM"
+        "VPC_PEERING: ESTABLISHED",
+        "RETENTION: 365D_COLD",
+        "SLA_MONITOR: 99.9%",
+        "COMPLIANCE: SOC2",
+        "ENCRYPTION: BYOK"
     ]
 };
 
@@ -51,53 +59,68 @@ const TerminalBackground = ({ streamKey }: { streamKey: string }) => {
     );
 };
 
-// Pricing Tiers Data - Monochrome Edition
+// Pricing Tiers Data - Infrastructure Edition
 const tiers = [
     {
-        name: "Local Developer",
+        name: "Local",
         price: "$0",
         streamKey: "local",
-        description: "For local debugging and evaluation.",
+        description: "A zero-risk sandbox for validation.",
         features: [
-            "Local deterministic record & replay",
-            "Timeline UI (local)",
-            "Keyframes & state hydration",
-            "Virtual filesystem sandbox"
+            "Localhost record & replay",
+            "7-day ephemeral retention",
+            "50 local trace cap",
+            "Single user environment"
         ],
-        limitations: "Local-only. No team features.",
-        cta: "Get Started Free",
+        limitations: "Local-only. No cloud storage.",
+        cta: "Initialize Localhost",
         popular: false
     },
     {
-        name: "Pro Team",
-        price: "$99",
+        name: "Cloud",
+        price: "$79",
         period: "/mo",
-        streamKey: "pro",
-        description: "For teams running agents in production.",
+        streamKey: "cloud",
+        description: "Standard reliability for production teams.",
         features: [
-            "Hosted trace storage",
-            "Team workspace",
-            "Cloud replay & fork",
-            "Branch comparison",
-            "Slack / Email alerts",
-            "30-day retention"
+            "Uncapped ingestion",
+            "30-day retention history",
+            "5 team seats",
+            "Algorithmic Repair (10/mo)",
+            "Slack / Email alerts"
         ],
-        hint: "Scales with execution volume",
-        cta: "Start Pro",
+        hint: "For shipping agents",
+        cta: "Deploy Team Cloud",
         popular: true
+    },
+    {
+        name: "Scale",
+        price: "$199",
+        period: "/mo",
+        streamKey: "scale",
+        description: "Governance for high-volume operations.",
+        features: [
+            "Uncapped ingestion",
+            "90-day retention history",
+            "20 team seats",
+            "Algorithmic Repair (Unlimited)",
+            "Enforced SAML SSO"
+        ],
+        hint: "For growing networks",
+        cta: "Upgrade to Scale",
+        popular: false
     },
     {
         name: "Enterprise",
         price: "Custom",
         streamKey: "enterprise",
-        description: "For production, compliance, and scale.",
+        description: "Mission-critical security & compliance.",
         features: [
-            "Unlimited team members",
-            "Advanced audit logs",
-            "Policy-managed sandboxes",
-            "SSO / SAML",
-            "SLA & priority support",
-            "On-prem / VPC options"
+            "365-day cold storage",
+            "Unlimited seats & volume",
+            "99.9% Uptime SLA",
+            "Virtual Private Cloud (VPC)",
+            "Audit & Compliance Logs"
         ],
         cta: "Contact Sales",
         popular: false
@@ -123,7 +146,7 @@ export const Pricing = () => {
                     }}
                 />
 
-                <div className="container relative z-10 max-w-[1200px] mx-auto px-6">
+                <div className="container relative z-10 max-w-[1400px] mx-auto px-6">
 
                     {/* Header - Terminal Style */}
                     <motion.div
@@ -135,16 +158,16 @@ export const Pricing = () => {
                             &lt;Pricing_Models /&gt;
                         </span>
                         <h1 className="text-5xl md:text-6xl font-bold tracking-tight text-foreground mb-6 leading-tight">
-                            Infrastructure pricing for <br /> <span className="text-foreground">critical agent systems</span>
+                            Infrastructure pricing for <br /> <span className="text-foreground">deterministic systems</span>
                         </h1>
                         <p className="text-xl text-muted-foreground/50 font-normal leading-relaxed max-w-2xl mx-auto">
-                            Start with local determinism. Scale to production observability. <br />
-                            <span className="text-foreground/80">Pay only when you rely on it.</span>
+                            Start in localhost. Scale to production. <br />
+                            <span className="text-foreground/80">Pay only for retention and team governance.</span>
                         </p>
                     </motion.div>
 
                     {/* Pricing Grid - Monochrome Living Terminal */}
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start perspective-1000">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-start perspective-1000">
                         {tiers.map((tier, i) => (
                             <motion.div
                                 key={tier.name}

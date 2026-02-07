@@ -9,6 +9,9 @@ import { Pricing } from "./pages/Pricing";
 import NotFound from "./pages/NotFound";
 import Signup from "./pages/Signup";
 import Docs from "./pages/Docs";
+import Compare from "./pages/Compare";
+import ComparePage from "./pages/ComparePage";
+import About from "./pages/About";
 
 const queryClient = new QueryClient();
 
@@ -24,6 +27,9 @@ const App = () => (
             <Route path="/pricing" element={<Pricing />} />
             <Route path="/signup" element={<Signup />} />
             <Route path="/docs" element={<Docs />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/compare" element={<Compare />} />
+            <Route path="/compare/:slug" element={<ComparePage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
